@@ -1,1 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahin Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
+    body {
+      background: #07130f;
+      color: white;
+      padding: 20px;
+      padding-bottom: 90px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0 25px;
+    }
+
+    header h1 {
+      color: #24df91;
+      font-size: 27px;
+    }
+
+    .profile {
+      background: #142820;
+      padding: 12px;
+      border-radius: 50%;
+    }
+
+    .balance {
+      background: linear-gradient(135deg, #08784c, #063d2d);
+      padding: 25px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+
+    .balance p {
+      color: #d0f5e5;
+      font-size: 14px;
+    }
+
+    .balance h2 {
+      font-size: 34px;
+      margin: 12px 0;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .deposit {
+      background: #21d68a;
+      color: #062719;
+    }
+
+    .withdraw {
+      background: #19382b;
+      color: white;
+      border: 1px solid #287b56;
+    }
+
+    .section {
+      background: #10231a;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section h3 {
+      color: #27dc91;
+      margin-bottom: 15px;
+    }
+
+    .item {
+      background: #193328;
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: 10px;
+      color: #e5fff2;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .menu div {
+      background: #193328;
+      padding: 18px 5px;
+      text-align: center;
+      border-radius: 12px;
+      color: #caffdf;
+    }
+
+    footer {
+      text-align: center;
+      color: #789687;
+      font-size: 12px;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>MAHIN</h1>
+      <div class="profile">👤</div>
+    </header>
+
+    <div class="balance">
+      <p>My Total Balance</p>
+      <h2>৳ 0.00</h2>
+      <p>Welcome to Mahin Dashboard</p>
+    </div>
+
+    <div class="actions">
+      <button class="deposit" onclick="demo('Deposit')">
+        + Deposit
+      </button>
+
+      <button class="withdraw" onclick="demo('Withdraw')">
+        Withdraw
+      </button>
+    </div>
+
+    <div class="section">
+      <h3>Transaction History</h3>
+      <div class="item">No transactions yet</div>
+    </div>
+
+    <div class="section">
+      <h3>My Dashboard</h3>
+      <div class="menu">
+        <div>🏠<br>Home</div>
+        <div>📋<br>Task</div>
+        <div>🔗<br>Referral</div>
+        <div>👥<br>Team</div>
+        <div>👤<br>Profile</div>
+        <div>💳<br>History</div>
+      </div>
+    </div>
+
+    <footer>
+      Mahin Website © 2026<br>
+      Demo Version Only
+    </footer>
+
+  </div>
+
+  <script>
+    function demo(action) {
+      alert(action + " is a demo feature only.");
+    }
+  </script>
+</body>
+</html>
