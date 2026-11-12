@@ -1,186 +1,213 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahin Dashboard</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #07130f;
-      color: white;
-      padding: 20px;
-      padding-bottom: 90px;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 15px 0 25px;
-    }
-
-    header h1 {
-      color: #24df91;
-      font-size: 27px;
-    }
-
-    .profile {
-      background: #142820;
-      padding: 12px;
-      border-radius: 50%;
-    }
-
-    .balance {
-      background: linear-gradient(135deg, #08784c, #063d2d);
-      padding: 25px;
-      border-radius: 20px;
-      margin-bottom: 22px;
-    }
-
-    .balance p {
-      color: #d0f5e5;
-      font-size: 14px;
-    }
-
-    .balance h2 {
-      font-size: 34px;
-      margin: 12px 0;
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 25px;
-    }
-
-    button {
-      border: none;
-      padding: 15px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .deposit {
-      background: #21d68a;
-      color: #062719;
-    }
-
-    .withdraw {
-      background: #19382b;
-      color: white;
-      border: 1px solid #287b56;
-    }
-
-    .section {
-      background: #10231a;
-      padding: 20px;
-      border-radius: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section h3 {
-      color: #27dc91;
-      margin-bottom: 15px;
-    }
-
-    .item {
-      background: #193328;
-      padding: 14px;
-      border-radius: 10px;
-      margin-top: 10px;
-      color: #e5fff2;
-    }
-
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .menu div {
-      background: #193328;
-      padding: 18px 5px;
-      text-align: center;
-      border-radius: 12px;
-      color: #caffdf;
-    }
-
-    footer {
-      text-align: center;
-      color: #789687;
-      font-size: 12px;
-      margin-top: 25px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAHIN Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Arial,sans-serif;
+  background:#081426;color:#fff;
+}
+header{
+  padding:22px 16px;text-align:center;
+  background:linear-gradient(135deg,#102c52,#087b91);
+}
+header h1{margin:0;font-size:25px;letter-spacing:2px}
+header p{color:#c8eaff;margin:7px 0 0}
+nav{
+  display:flex;overflow-x:auto;gap:8px;padding:12px;
+  background:#102039;position:sticky;top:0;z-index:5;
+}
+nav button{
+  border:1px solid #23617c;background:#142e4b;
+  color:white;padding:10px 14px;border-radius:20px;
+  white-space:nowrap;cursor:pointer;
+}
+nav button.active{background:#087f91}
+main{max-width:760px;margin:auto;padding:15px}
+.card{
+  background:#11243d;border:1px solid #214765;
+  padding:18px;border-radius:15px;margin-bottom:14px;
+}
+h2{color:#55d9e8;margin-top:0}
+h3{margin-bottom:8px}
+.muted{color:#a9bfd4;font-size:14px;line-height:1.6}
+.stat-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.stat{
+  background:#183452;padding:15px;border-radius:12px;
+}
+.stat strong{display:block;color:#61e1e9;font-size:21px;margin-top:8px}
+.action{
+  width:100%;padding:12px;border:0;border-radius:9px;
+  background:#087f91;color:white;font-size:15px;
+  cursor:pointer;margin-top:8px;
+}
+.action:disabled{background:#46576a;color:#c1cbd4}
+input,select{
+  width:100%;padding:12px;margin:7px 0 12px;
+  border-radius:8px;border:1px solid #42617c;
+  background:#091a2d;color:white;
+}
+.page{display:none}
+.page.active{display:block}
+footer{text-align:center;color:#91a8bd;padding:25px;font-size:13px}
+.tag{color:#68e5d7;font-size:12px}
+</style>
 </head>
-
 <body>
-  <div class="container">
 
-    <header>
-      <h1>MAHIN</h1>
-      <div class="profile">👤</div>
-    </header>
+<header>
+  <h1>MAHIN DASHBOARD</h1>
+  <p>Your Personal Demo Dashboard</p>
+</header>
 
-    <div class="balance">
-      <p>My Total Balance</p>
-      <h2>৳ 0.00</h2>
-      <p>Welcome to Mahin Dashboard</p>
-    </div>
+<nav>
+  <button class="active" onclick="showPage('home',this)">Home</button>
+  <button onclick="showPage('plans',this)">Plans</button>
+  <button onclick="showPage('rewards',this)">Rewards</button>
+  <button onclick="showPage('team',this)">Team</button>
+  <button onclick="showPage('deposit',this)">Deposit</button>
+  <button onclick="showPage('withdraw',this)">Withdraw</button>
+  <button onclick="showPage('history',this)">History</button>
+  <button onclick="showPage('profile',this)">Profile</button>
+  <button onclick="showPage('support',this)">Support</button>
+</nav>
 
-    <div class="actions">
-      <button class="deposit" onclick="demo('Deposit')">
-        + Deposit
-      </button>
+<main>
 
-      <button class="withdraw" onclick="demo('Withdraw')">
-        Withdraw
-      </button>
-    </div>
-
-    <div class="section">
-      <h3>Transaction History</h3>
-      <div class="item">No transactions yet</div>
-    </div>
-
-    <div class="section">
-      <h3>My Dashboard</h3>
-      <div class="menu">
-        <div>🏠<br>Home</div>
-        <div>📋<br>Task</div>
-        <div>🔗<br>Referral</div>
-        <div>👥<br>Team</div>
-        <div>👤<br>Profile</div>
-        <div>💳<br>History</div>
-      </div>
-    </div>
-
-    <footer>
-      Mahin Website © 2026<br>
-      Demo Version Only
-    </footer>
-
+<section id="home" class="page active">
+  <div class="card">
+    <h2>Welcome to MAHIN</h2>
+    <p class="muted">এটি একটি Demo Dashboard। এখানে কোনো আসল আর্থিক লেনদেন হয় না।</p>
+    <span class="tag">● DEMO MODE ACTIVE</span>
   </div>
+  <div class="stat-grid">
+    <div class="stat">Demo Points<strong>0</strong></div>
+    <div class="stat">Team Members<strong>0</strong></div>
+    <div class="stat">Deposit<strong>৳0</strong></div>
+    <div class="stat">Withdraw<strong>৳0</strong></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>Dashboard Overview</h3>
+    <p class="muted">তোমার ডেমো প্রোফাইল, প্ল্যান ও পয়েন্ট এখানে দেখা যাবে।</p>
+  </div>
+</section>
 
-  <script>
-    function demo(action) {
-      alert(action + " is a demo feature only.");
-    }
-  </script>
+<section id="plans" class="page">
+  <div class="card">
+    <h2>Demo Plans</h2>
+    <p class="muted">এগুলো শুধু ডিজাইন ও শেখার জন্য নমুনা মেম্বারশিপ লেভেল। কোনো টাকা বা লাভের প্রতিশ্রুতি নেই।</p>
+  </div>
+  <div class="card"><h3>Starter</h3><p class="muted">Basic demo membership</p><button class="action" onclick="demoInfo()">View Plan</button></div>
+  <div class="card"><h3>Silver</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
+  <div class="card"><h3>Gold</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
+  <div class="card"><h3>Platinum</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
+  <div class="card"><h3>Diamond</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
+</section>
+
+<section id="rewards" class="page">
+  <div class="card">
+    <h2>Rewards</h2>
+    <p class="muted">Demo reward points: 0</p>
+    <p class="muted">এখানে শুধু পরীক্ষামূলক পয়েন্ট দেখানো হবে। এগুলোর নগদ মূল্য নেই।</p>
+  </div>
+</section>
+
+<section id="team" class="page">
+  <div class="card">
+    <h2>My Team</h2>
+    <p class="muted">Team Members: 0</p>
+    <p class="muted">Referral Code: DEMO-MAHIN</p>
+    <button class="action" onclick="copyReferral()">Copy Demo Code</button>
+  </div>
+</section>
+
+<section id="deposit" class="page">
+  <div class="card">
+    <h2>Deposit Demo</h2>
+    <p class="muted">এখানে কোনো আসল পেমেন্ট নেওয়া হয় না।</p>
+    <label>Payment Method</label>
+    <select disabled>
+      <option>bKash — Demo Only</option>
+      <option>Nagad — Demo Only</option>
+    </select>
+    <label>Transaction ID (Demo)</label>
+    <input placeholder="Demo Transaction ID" disabled>
+    <button class="action" disabled>Real Deposit Disabled</button>
+    <p class="tag">DEMO ONLY — REAL PAYMENT NOT ENABLED</p>
+  </div>
+</section>
+
+<section id="withdraw" class="page">
+  <div class="card">
+    <h2>Withdraw Demo</h2>
+    <p class="muted">বাস্তব টাকা উত্তোলনের কোনো ব্যবস্থা এখানে চালু নেই।</p>
+    <input placeholder="Amount (Demo)" disabled>
+    <button class="action" disabled>Real Withdraw Disabled</button>
+  </div>
+</section>
+
+<section id="history" class="page">
+  <div class="card">
+    <h2>Transaction History</h2>
+    <p class="muted">এখনো কোনো ডেমো লেনদেন নেই।</p>
+  </div>
+</section>
+
+<section id="profile" class="page">
+  <div class="card">
+    <h2>My Profile</h2>
+    <p>Name: MAHIN</p>
+    <p>UID: DEMO-0001</p>
+    <p>Account: Demo Account</p>
+    <p class="muted">এটি আসল লগইন বা নিবন্ধন ব্যবস্থা নয়।</p>
+  </div>
+</section>
+
+<section id="support" class="page">
+  <div class="card">
+    <h2>Help & Support</h2>
+    <p class="muted">MAHIN Dashboard Demo Support</p>
+    <p class="muted">বাস্তব সাপোর্ট চালু করতে হলে যাচাইকৃত যোগাযোগের তথ্য ও নিরাপদ সার্ভার প্রয়োজন।</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  MAHIN Dashboard © 2026<br>
+  DEMO VERSION — NO REAL MONEY TRANSACTIONS
+</footer>
+
+<script>
+function showPage(id,button){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('nav button').forEach(b=>{
+    b.classList.remove('active');
+  });
+  button.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function demoInfo(){
+  alert('এটি শুধু একটি ডেমো মেম্বারশিপ। কোনো টাকা জমা বা লাভ নেই।');
+}
+
+function copyReferral(){
+  navigator.clipboard?.writeText('DEMO-MAHIN')
+    .then(()=>alert('Demo code copied!'))
+    .catch(()=>alert('Demo code: DEMO-MAHIN'));
+}
+</script>
+
 </body>
 </html>
