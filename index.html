@@ -51,7 +51,7 @@ footer{text-align:center;color:#789687;font-size:12px;padding:20px}
 <input id="regPhone" placeholder="01XXXXXXXXX" inputmode="numeric">
 <input id="regPass" type="password" placeholder="নতুন পাসওয়ার্ড">
 <button onclick="register()">Register Now</button>
-<p class="small">নতুন অ্যাকাউন্টে ১৫০ ডেমো ক্রেডিট দেখানো হবে।</p>
+<p class="small">নতুন অ্যাকাউন্টে ১৫০  ক্রেডিট দেখানো হবে।</p>
 <p>আগে অ্যাকাউন্ট আছে? <a onclick="showLogin()">Login করুন</a></p>
 </div>
 <div id="login" class="hidden">
@@ -99,7 +99,7 @@ footer{text-align:center;color:#789687;font-size:12px;padding:20px}
 
 <section id="plans" class="page card hidden">
 <h3>Available Plans</h3>
-<p class="small">নিচের অঙ্কগুলো শুধু ডেমো প্রদর্শন। বাস্তব আয় বা লাভের নিশ্চয়তা নয়।</p>
+<p class="small">নিচের অঙ্কগুলো শুধু প্রদর্শন। বাস্তব আয় বা লাভের নিশ্চয়তা নয়।</p>
 <div id="planList"></div>
 </section>
 
@@ -123,14 +123,14 @@ footer{text-align:center;color:#789687;font-size:12px;padding:20px}
 
 <section id="deposit" class="page card hidden">
 <h3>Deposit Request</h3>
-<p class="small">শুধু ডেমো অনুরোধ। কোনো টাকা পাঠাবেন না।</p>
+<p class="small">শুধু  অনুরোধ। কোনো টাকা পাঠাবেন না।</p>
 <input id="depositAmount" type="number" placeholder="Amount (৳)">
 <button onclick="requestMoney('Deposit')">Submit Request</button>
 </section>
 
 <section id="withdraw" class="page card hidden">
 <h3>Withdraw Request</h3>
-<p class="small">ডেমো অনুরোধ; বাস্তব পেমেন্ট করা হবে না।</p>
+<p class="small"> অনুরোধ; বাস্তব পেমেন্ট করা হবে না।</p>
 <input id="withdrawAmount" type="number" placeholder="Amount (৳)">
 <button onclick="requestMoney('Withdraw')">Submit Request</button>
 </section>
@@ -199,16 +199,16 @@ date:new Date().toLocaleString()
 }];
 
 openDashboard();
-alert('Registration সফল! আপনার ১৫০ ডেমো ক্রেডিট যোগ হয়েছে।');
+alert('Registration সফল! আপনার ১৫০ ক্রেডিট যোগ হয়েছে।');
 }
 
 function login(){
 let phone=document.getElementById('loginPhone').value.trim();
 if(!account||phone!==account.phone){
-alert('এই ডেমো সেশনে অ্যাকাউন্ট পাওয়া যায়নি। নতুন করে রেজিস্ট্রেশন করুন।');
+alert('এই  সেশনে অ্যাকাউন্ট পাওয়া যায়নি। নতুন করে রেজিস্ট্রেশন করুন।');
 return;
 }
-alert('ডেমো লগইন সফল।');
+alert('।');
 openDashboard();
 }
 
@@ -230,7 +230,7 @@ document.getElementById('planList').innerHTML=plans.map((p,i)=>`
 <div class="plan">
 <strong>Plan ${i+1}</strong>
 <p>মূল্য: ৳${p.price}</p>
-<p>ডেমো দৈনিক পরিমাণ: ৳${p.daily}</p>
+<p>: ৳${p.daily}</p>
 <p>মেয়াদ: ৫২ দিন</p>
 </div>`).join('');
 
@@ -260,7 +260,7 @@ date:new Date().toLocaleString()
 });
 document.getElementById(field).value='';
 render();
-alert('ডেমো অনুরোধ হিস্টরিতে যোগ হয়েছে। কোনো বাস্তব টাকা লেনদেন হয়নি।');
+alert('');
 showSection('history');
 }
 
