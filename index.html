@@ -1,213 +1,276 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MAHIN Dashboard</title>
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;font-family:Arial,sans-serif;
-  background:#081426;color:#fff;
-}
-header{
-  padding:22px 16px;text-align:center;
-  background:linear-gradient(135deg,#102c52,#087b91);
-}
-header h1{margin:0;font-size:25px;letter-spacing:2px}
-header p{color:#c8eaff;margin:7px 0 0}
-nav{
-  display:flex;overflow-x:auto;gap:8px;padding:12px;
-  background:#102039;position:sticky;top:0;z-index:5;
-}
-nav button{
-  border:1px solid #23617c;background:#142e4b;
-  color:white;padding:10px 14px;border-radius:20px;
-  white-space:nowrap;cursor:pointer;
-}
-nav button.active{background:#087f91}
-main{max-width:760px;margin:auto;padding:15px}
-.card{
-  background:#11243d;border:1px solid #214765;
-  padding:18px;border-radius:15px;margin-bottom:14px;
-}
-h2{color:#55d9e8;margin-top:0}
-h3{margin-bottom:8px}
-.muted{color:#a9bfd4;font-size:14px;line-height:1.6}
-.stat-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-}
-.stat{
-  background:#183452;padding:15px;border-radius:12px;
-}
-.stat strong{display:block;color:#61e1e9;font-size:21px;margin-top:8px}
-.action{
-  width:100%;padding:12px;border:0;border-radius:9px;
-  background:#087f91;color:white;font-size:15px;
-  cursor:pointer;margin-top:8px;
-}
-.action:disabled{background:#46576a;color:#c1cbd4}
-input,select{
-  width:100%;padding:12px;margin:7px 0 12px;
-  border-radius:8px;border:1px solid #42617c;
-  background:#091a2d;color:white;
-}
-.page{display:none}
-.page.active{display:block}
-footer{text-align:center;color:#91a8bd;padding:25px;font-size:13px}
-.tag{color:#68e5d7;font-size:12px}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#07130f;color:white;padding:16px;padding-bottom:35px}
+.container{max-width:600px;margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 0 25px}
+header h1{color:#24df91;letter-spacing:2px}
+.card{background:#10271c;border:1px solid #204c37;padding:19px;border-radius:17px;margin-bottom:17px}
+h3{color:#24df91;margin-bottom:14px}
+p{line-height:1.7}
+input,button,select{width:100%;padding:14px;border-radius:10px;border:1px solid #28563f;margin:7px 0;font-size:15px}
+input,select{background:#0a1b13;color:white}
+button{background:#20d68a;color:#062719;font-weight:bold;border:0;cursor:pointer}
+button.secondary{background:#193b2b;color:white;border:1px solid #287b56}
+button:disabled{opacity:.5}
+.hidden{display:none!important}
+.balance{background:linear-gradient(135deg,#08784c,#063d2d);padding:25px;border-radius:18px;margin-bottom:18px}
+.balance h2{font-size:34px;margin:12px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.menu button{background:#193328;color:#caffdf;padding:17px 5px}
+.plan{background:#193328;padding:14px;border-radius:12px;margin:10px 0}
+.plan strong{color:#29df96}
+.small{font-size:12px;color:#9ab6a7}
+.item{padding:12px;background:#193328;border-radius:10px;margin-top:9px;overflow-wrap:anywhere}
+a{color:#29df96;cursor:pointer}
+footer{text-align:center;color:#789687;font-size:12px;padding:20px}
 </style>
 </head>
 <body>
+<div class="container">
 
 <header>
-  <h1>MAHIN DASHBOARD</h1>
-  <p>Your Personal Demo Dashboard</p>
+<h1>MAHIN</h1>
+<span>👤</span>
 </header>
 
-<nav>
-  <button class="active" onclick="showPage('home',this)">Home</button>
-  <button onclick="showPage('plans',this)">Plans</button>
-  <button onclick="showPage('rewards',this)">Rewards</button>
-  <button onclick="showPage('team',this)">Team</button>
-  <button onclick="showPage('deposit',this)">Deposit</button>
-  <button onclick="showPage('withdraw',this)">Withdraw</button>
-  <button onclick="showPage('history',this)">History</button>
-  <button onclick="showPage('profile',this)">Profile</button>
-  <button onclick="showPage('support',this)">Support</button>
-</nav>
-
-<main>
-
-<section id="home" class="page active">
-  <div class="card">
-    <h2>Welcome to MAHIN</h2>
-    <p class="muted">এটি একটি Demo Dashboard। এখানে কোনো আসল আর্থিক লেনদেন হয় না।</p>
-    <span class="tag">● DEMO MODE ACTIVE</span>
-  </div>
-  <div class="stat-grid">
-    <div class="stat">Demo Points<strong>0</strong></div>
-    <div class="stat">Team Members<strong>0</strong></div>
-    <div class="stat">Deposit<strong>৳0</strong></div>
-    <div class="stat">Withdraw<strong>৳0</strong></div>
-  </div>
-  <div class="card" style="margin-top:14px">
-    <h3>Dashboard Overview</h3>
-    <p class="muted">তোমার ডেমো প্রোফাইল, প্ল্যান ও পয়েন্ট এখানে দেখা যাবে।</p>
-  </div>
+<!-- AUTH -->
+<section id="auth">
+<div class="card">
+<h3>Welcome to MAHIN</h3>
+<p class="small">বাংলাদেশি মোবাইল নম্বর দিয়ে অ্যাকাউন্ট তৈরি করুন।</p>
+<div id="register">
+<h3>Registration</h3>
+<input id="regName" placeholder="আপনার নাম">
+<input id="regPhone" placeholder="01XXXXXXXXX" inputmode="numeric">
+<input id="regPass" type="password" placeholder="নতুন পাসওয়ার্ড">
+<button onclick="register()">Register Now</button>
+<p class="small">নতুন অ্যাকাউন্টে ১৫০ ডেমো ক্রেডিট দেখানো হবে।</p>
+<p>আগে অ্যাকাউন্ট আছে? <a onclick="showLogin()">Login করুন</a></p>
+</div>
+<div id="login" class="hidden">
+<h3>Login</h3>
+<input id="loginPhone" placeholder="বাংলাদেশি মোবাইল নম্বর" inputmode="numeric">
+<input id="loginPass" type="password" placeholder="পাসওয়ার্ড">
+<button onclick="login()">Login</button>
+<p>নতুন সদস্য? <a onclick="showRegister()">Registration করুন</a></p>
+</div>
+</div>
+<p class="small">এটি পরীক্ষামূলক সংস্করণ। এখানে কোনো বাস্তব টাকা জমা হয় না।</p>
 </section>
 
-<section id="plans" class="page">
-  <div class="card">
-    <h2>Demo Plans</h2>
-    <p class="muted">এগুলো শুধু ডিজাইন ও শেখার জন্য নমুনা মেম্বারশিপ লেভেল। কোনো টাকা বা লাভের প্রতিশ্রুতি নেই।</p>
-  </div>
-  <div class="card"><h3>Starter</h3><p class="muted">Basic demo membership</p><button class="action" onclick="demoInfo()">View Plan</button></div>
-  <div class="card"><h3>Silver</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
-  <div class="card"><h3>Gold</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
-  <div class="card"><h3>Platinum</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
-  <div class="card"><h3>Diamond</h3><p class="muted">Demo membership level</p><button class="action" onclick="demoInfo()">View Plan</button></div>
+<!-- DASHBOARD -->
+<main id="dashboard" class="hidden">
+<div class="balance">
+<p>My Demo Balance</p>
+<h2 id="balance">৳150.00</h2>
+<p id="welcome">Welcome to MAHIN</p>
+<p class="small">Demo credits only — not withdrawable cash</p>
+</div>
+
+<div class="grid">
+<button onclick="showSection('deposit')">＋ Deposit Request</button>
+<button class="secondary" onclick="showSection('withdraw')">Withdraw Request</button>
+</div>
+
+<div class="card">
+<h3>My Dashboard</h3>
+<div class="menu">
+<button onclick="showSection('home')">🏠<br>Home</button>
+<button onclick="showSection('plans')">📋<br>Plans</button>
+<button onclick="showSection('rewards')">🎁<br>Reward</button>
+<button onclick="showSection('team')">👥<br>Team</button>
+<button onclick="showSection('profile')">👤<br>Profile</button>
+<button onclick="showSection('history')">💳<br>History</button>
+</div>
+</div>
+
+<section id="home" class="page card">
+<h3>Home</h3>
+<p>আপনার MAHIN Dashboard-এ স্বাগতম।</p>
+<p id="homeUid" class="item"></p>
 </section>
 
-<section id="rewards" class="page">
-  <div class="card">
-    <h2>Rewards</h2>
-    <p class="muted">Demo reward points: 0</p>
-    <p class="muted">এখানে শুধু পরীক্ষামূলক পয়েন্ট দেখানো হবে। এগুলোর নগদ মূল্য নেই।</p>
-  </div>
+<section id="plans" class="page card hidden">
+<h3>Available Plans</h3>
+<p class="small">নিচের অঙ্কগুলো শুধু ডেমো প্রদর্শন। বাস্তব আয় বা লাভের নিশ্চয়তা নয়।</p>
+<div id="planList"></div>
 </section>
 
-<section id="team" class="page">
-  <div class="card">
-    <h2>My Team</h2>
-    <p class="muted">Team Members: 0</p>
-    <p class="muted">Referral Code: DEMO-MAHIN</p>
-    <button class="action" onclick="copyReferral()">Copy Demo Code</button>
-  </div>
+<section id="rewards" class="page card hidden">
+<h3>Rewards</h3>
+<div class="item">Registration Demo Bonus: ৳150</div>
+<p class="small">এটি উত্তোলনযোগ্য অর্থ নয়।</p>
 </section>
 
-<section id="deposit" class="page">
-  <div class="card">
-    <h2>Deposit Demo</h2>
-    <p class="muted">এখানে কোনো আসল পেমেন্ট নেওয়া হয় না।</p>
-    <label>Payment Method</label>
-    <select disabled>
-      <option>bKash — Demo Only</option>
-      <option>Nagad — Demo Only</option>
-    </select>
-    <label>Transaction ID (Demo)</label>
-    <input placeholder="Demo Transaction ID" disabled>
-    <button class="action" disabled>Real Deposit Disabled</button>
-    <p class="tag">DEMO ONLY — REAL PAYMENT NOT ENABLED</p>
-  </div>
+<section id="team" class="page card hidden">
+<h3>My Team</h3>
+<p id="teamUid"></p>
+<div class="item">Team members: 0</div>
 </section>
 
-<section id="withdraw" class="page">
-  <div class="card">
-    <h2>Withdraw Demo</h2>
-    <p class="muted">বাস্তব টাকা উত্তোলনের কোনো ব্যবস্থা এখানে চালু নেই।</p>
-    <input placeholder="Amount (Demo)" disabled>
-    <button class="action" disabled>Real Withdraw Disabled</button>
-  </div>
+<section id="profile" class="page card hidden">
+<h3>My Profile</h3>
+<p id="profileInfo"></p>
+<button class="secondary" onclick="logout()">Logout</button>
 </section>
 
-<section id="history" class="page">
-  <div class="card">
-    <h2>Transaction History</h2>
-    <p class="muted">এখনো কোনো ডেমো লেনদেন নেই।</p>
-  </div>
+<section id="deposit" class="page card hidden">
+<h3>Deposit Request</h3>
+<p class="small">শুধু ডেমো অনুরোধ। কোনো টাকা পাঠাবেন না।</p>
+<input id="depositAmount" type="number" placeholder="Amount (৳)">
+<button onclick="requestMoney('Deposit')">Submit Request</button>
 </section>
 
-<section id="profile" class="page">
-  <div class="card">
-    <h2>My Profile</h2>
-    <p>Name: MAHIN</p>
-    <p>UID: DEMO-0001</p>
-    <p>Account: Demo Account</p>
-    <p class="muted">এটি আসল লগইন বা নিবন্ধন ব্যবস্থা নয়।</p>
-  </div>
+<section id="withdraw" class="page card hidden">
+<h3>Withdraw Request</h3>
+<p class="small">ডেমো অনুরোধ; বাস্তব পেমেন্ট করা হবে না।</p>
+<input id="withdrawAmount" type="number" placeholder="Amount (৳)">
+<button onclick="requestMoney('Withdraw')">Submit Request</button>
 </section>
 
-<section id="support" class="page">
-  <div class="card">
-    <h2>Help & Support</h2>
-    <p class="muted">MAHIN Dashboard Demo Support</p>
-    <p class="muted">বাস্তব সাপোর্ট চালু করতে হলে যাচাইকৃত যোগাযোগের তথ্য ও নিরাপদ সার্ভার প্রয়োজন।</p>
-  </div>
+<section id="history" class="page card hidden">
+<h3>Transaction History</h3>
+<div id="transactions">No transactions yet</div>
 </section>
 
+<section class="card">
+<h3>Message & Support</h3>
+<p>সাপোর্টের জন্য অ্যাডমিনের সঙ্গে যোগাযোগ করুন।</p>
+</section>
 </main>
 
-<footer>
-  MAHIN Dashboard © 2026<br>
-  DEMO VERSION — NO REAL MONEY TRANSACTIONS
-</footer>
+<footer>MAHIN Dashboard © 2026<br>Prototype Version</footer>
+</div>
 
 <script>
-function showPage(id,button){
-  document.querySelectorAll('.page').forEach(p=>{
-    p.classList.remove('active');
-  });
-  document.getElementById(id).classList.add('active');
+let account=null;
+let balance=150;
+let history=[];
 
-  document.querySelectorAll('nav button').forEach(b=>{
-    b.classList.remove('active');
-  });
-  button.classList.add('active');
-  window.scrollTo(0,0);
+const plans=[
+{price:550,daily:100},
+{price:1000,daily:200},
+{price:2000,daily:450},
+{price:4000,daily:880},
+{price:6000,daily:1400}
+];
+
+function showLogin(){
+document.getElementById('register').classList.add('hidden');
+document.getElementById('login').classList.remove('hidden');
+}
+function showRegister(){
+document.getElementById('login').classList.add('hidden');
+document.getElementById('register').classList.remove('hidden');
 }
 
-function demoInfo(){
-  alert('এটি শুধু একটি ডেমো মেম্বারশিপ। কোনো টাকা জমা বা লাভ নেই।');
+function register(){
+let name=document.getElementById('regName').value.trim();
+let phone=document.getElementById('regPhone').value.trim();
+let pass=document.getElementById('regPass').value;
+
+if(!name||!phone||!pass){
+alert('সব তথ্য পূরণ করুন।');return;
+}
+if(!/^01[3-9]\d{8}$/.test(phone)){
+alert('সঠিক বাংলাদেশি মোবাইল নম্বর দিন।');return;
+}
+if(pass.length<8){
+alert('পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।');return;
 }
 
-function copyReferral(){
-  navigator.clipboard?.writeText('DEMO-MAHIN')
-    .then(()=>alert('Demo code copied!'))
-    .catch(()=>alert('Demo code: DEMO-MAHIN'));
+account={
+name:name,
+phone:phone,
+uid:'MH'+Math.floor(100000+Math.random()*900000)
+};
+balance=150;
+history=[{
+type:'Registration Demo Bonus',
+amount:150,
+date:new Date().toLocaleString()
+}];
+
+openDashboard();
+alert('Registration সফল! আপনার ১৫০ ডেমো ক্রেডিট যোগ হয়েছে।');
 }
+
+function login(){
+let phone=document.getElementById('loginPhone').value.trim();
+if(!account||phone!==account.phone){
+alert('এই ডেমো সেশনে অ্যাকাউন্ট পাওয়া যায়নি। নতুন করে রেজিস্ট্রেশন করুন।');
+return;
+}
+alert('ডেমো লগইন সফল।');
+openDashboard();
+}
+
+function openDashboard(){
+document.getElementById('auth').classList.add('hidden');
+document.getElementById('dashboard').classList.remove('hidden');
+document.getElementById('welcome').innerText='Welcome, '+account.name;
+document.getElementById('homeUid').innerText='Your UID: '+account.uid;
+document.getElementById('teamUid').innerText='Your Referral UID: '+account.uid;
+document.getElementById('profileInfo').innerText=
+'Name: '+account.name+' | Phone: '+account.phone+' | UID: '+account.uid;
+render();
+showSection('home');
+}
+
+function render(){
+document.getElementById('balance').innerText='৳'+balance.toFixed(2);
+document.getElementById('planList').innerHTML=plans.map((p,i)=>`
+<div class="plan">
+<strong>Plan ${i+1}</strong>
+<p>মূল্য: ৳${p.price}</p>
+<p>ডেমো দৈনিক পরিমাণ: ৳${p.daily}</p>
+<p>মেয়াদ: ৫২ দিন</p>
+</div>`).join('');
+
+document.getElementById('transactions').innerHTML=
+history.length?history.slice().reverse().map(t=>`
+<div class="item">
+${t.type}: ৳${t.amount}<br>
+<span class="small">${t.date}</span>
+</div>`).join(''):'No transactions yet';
+}
+
+function showSection(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+}
+
+function requestMoney(type){
+let field=type==='Deposit'?'depositAmount':'withdrawAmount';
+let amount=Number(document.getElementById(field).value);
+if(!amount||amount<=0){
+alert('সঠিক পরিমাণ লিখুন।');return;
+}
+history.push({
+type:type+' Demo Request (Not Paid)',
+amount:amount,
+date:new Date().toLocaleString()
+});
+document.getElementById(field).value='';
+render();
+alert('ডেমো অনুরোধ হিস্টরিতে যোগ হয়েছে। কোনো বাস্তব টাকা লেনদেন হয়নি।');
+showSection('history');
+}
+
+function logout(){
+account=null;
+document.getElementById('dashboard').classList.add('hidden');
+document.getElementById('auth').classList.remove('hidden');
+showRegister();
+}
+
 </script>
-
 </body>
 </html>
